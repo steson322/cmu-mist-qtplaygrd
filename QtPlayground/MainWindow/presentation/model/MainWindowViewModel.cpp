@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "MainWindowViewModel.h"
 
-MainWindow::MainWindow(QObject * parent) :
+MainWindowViewModel::MainWindowViewModel(QObject * parent) :
     QObject(parent)//,
     //connected(false),
     //protocolRestServices(new ProtocolRestServices(this)),
@@ -10,6 +10,6 @@ MainWindow::MainWindow(QObject * parent) :
 
 }
 
-MainWindow::~MainWindow()
+MainWindowViewModel::~MainWindowViewModel()
 {
 }

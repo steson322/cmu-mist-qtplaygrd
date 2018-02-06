@@ -19,7 +19,8 @@ SOURCES += main.cpp
 include(MainWindow/MainWindow.pri)
 
 RESOURCES += \
-    MainWindow/presentation/view/MainWindow.qrc
+    MainWindow/presentation/view/MainWindow.qrc \
+    presentation/view/app.qrc
 
 OTHER_FILES += \
     presentation/view/app.qml

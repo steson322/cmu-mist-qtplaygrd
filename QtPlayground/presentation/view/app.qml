@@ -3,7 +3,7 @@ import QtQuick 2.0
 //The module Model is dynamically created from Main. This is how the backend c++ code is exposed to the UI
 import Model 1.0
 
-import "qrc:///presentation/view"
+//import "qrc:///presentation/view"
 
 /// Main page Item
 Item {
@@ -21,10 +21,17 @@ Item {
         page_loader.source = target;
     }
 
+    /// \subqml Globally available loader for all "pages" loaded using navigateTo(..),
+    /// however using the loader directly is discouraged
+    Loader {
+        id: page_loader
+        anchors.fill: parent
+    }
+
     /// Loads the intiial "page"
     Component.onCompleted:
     {
-        navigateTo("qrc:///mainwindow.qml");
+        navigateTo("qrc:///MainWindow.qml");
     }
 
 }// end item Litdeco

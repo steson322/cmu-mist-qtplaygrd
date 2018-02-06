@@ -1,8 +1,14 @@
 OTHER_FILES += \
-   MainWindow/presentation/view/mainwindow.qml \
 
 HEADERS += \
-    MainWindow/presentation/model/mainwindow.h \
+    MainWindow/presentation/presenter/MainWindowModel.h \
+    $$PWD/presentation/model/MainWindowViewModel.h
 
 SOURCES += \
-    MainWindow/presentation/model/mainwindow.cpp \
+    MainWindow/presentation/presenter/MainWindowModel.cpp \
+    $$PWD/presentation/model/MainWindowViewModel.cpp
+
+DISTFILES += \
+    $$PWD/presentation/view/MainWindow.qml \
+    $$PWD/presentation/view/ConditionBar.qml\
+    $$PWD/presentation/view/TaskBar.qml

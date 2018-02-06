@@ -2,7 +2,7 @@
 #include <QtQml>
 #include <QQuickView>
 
-#include "MainWindow/presentation/model/mainwindow.h"
+#include "MainWindow/presentation/model/MainWindowViewModel.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QGuiApplication a(argc, argv);
 
     // Register backend objects as Model
-    qmlRegisterType<MainWindow>("Model", 1, 0, "MainWindow");
+    qmlRegisterType<MainWindowViewModel>("Model", 1, 0, "MainWindow");
 
     // This call to QQuickView is to initialize the application and load the Qt runtime.
     // The source url is the url of the main qml file from the project.
