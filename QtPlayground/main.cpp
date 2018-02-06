@@ -3,6 +3,7 @@
 #include <QQuickView>
 
 #include "MainWindow/presentation/model/MainWindowViewModel.h"
+#include "MainWindow/presentation/model/ConditionBarViewModel.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +12,8 @@ int main(int argc, char *argv[])
     QGuiApplication a(argc, argv);
 
     // Register backend objects as Model
-    qmlRegisterType<MainWindowViewModel>("Model", 1, 0, "MainWindow");
+    qmlRegisterType<MainWindowViewModel>("Model", 1, 0, "MainWindowVM");
+    qmlRegisterType<ConditionBarViewModel>("Model", 1, 0, "ConditionBarVM");
 
     // This call to QQuickView is to initialize the application and load the Qt runtime.
     // The source url is the url of the main qml file from the project.

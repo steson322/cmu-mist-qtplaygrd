@@ -8,7 +8,7 @@ Rectangle
     id: mainWindow
     color: "#f6f6f6"
 
-    MainWindow
+    MainWindowVM
     {
         id: loginModel
     }
@@ -24,6 +24,7 @@ Rectangle
     }
 
     RowLayout {
+        id: row
         spacing: 0
         anchors.fill: parent
 
@@ -34,6 +35,7 @@ Rectangle
         }
 
         ColumnLayout {
+            id: column
             Layout.alignment: Qt.AlignLeft | Qt.AlignTop
             spacing: 0
             Layout.fillHeight: true
@@ -44,6 +46,7 @@ Rectangle
                 height: 56
                 Layout.fillWidth: true
             }
+
         }
     }
 }
