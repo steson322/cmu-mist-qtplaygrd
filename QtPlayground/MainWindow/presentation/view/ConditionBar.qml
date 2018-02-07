@@ -4,7 +4,6 @@ import Model 1.0
 
 Item {
     height: 56
-    property alias item1: item1
 
     ConditionBarVM {
         id: conditionBar
@@ -22,17 +21,15 @@ Item {
             orientation: ListView.Horizontal
             interactive: false
 
-            model: ["Test Data", "Test Data2"]
-            //conditionBar.configNames
+            model: conditionBar.configNames
 
-            delegate: Rectangle {
+            delegate: Item {
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                width: text1.width + 100
-                color: "#ff0000"
+                width: text1.width + 35
                 Rectangle {
                     id: rectangle1
-                    width: text1.width + 100
+                    width: childrenRect.width
                     height: 25
                     color: "#ff8351"
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -40,26 +37,20 @@ Item {
                     radius: 5
                     RowLayout {
                         id: column
-                        anchors.fill: parent
-                        Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                        width: text1.width + 35
                         spacing: 0
-                        Layout.fillHeight: true
-                        Layout.fillWidth: true
 
                         Item {
                             id: item1
-                            Layout.fillHeight: true
-                            Layout.fillWidth: true
+                            width: text1.width + 10
 
                             Text {
                                 id: text1
-                                Layout.fillHeight: true
-                                Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                                text: qsTr(modelData)
-                                anchors.fill: parent
+                                x: 5
+                                anchors.verticalCenter: parent.verticalCenter
                                 color: "#ffffff"
+                                text: qsTr(modelData)
+                                anchors.verticalCenterOffset: 0
                                 font.pixelSize: 14
                             }
                         }
@@ -72,26 +63,15 @@ Item {
 
                             Text {
                                 id: remove1
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
                                 text: qsTr("X")
-                                anchors.fill: parent
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                anchors.verticalCenter: parent.verticalCenter
                                 color: "#ffffff"
                                 font.pixelSize: 14
                             }
                         }
                     }
                 }
-            }
-
-            Text {
-                id: text2
-                x: 261
-                y: 27
-                color: "#ffffff"
-                text: "Text"
-                font.family: "Verdana"
-                font.pixelSize: 14
             }
         }
     }

@@ -3,9 +3,9 @@
 ConditionBarViewModel::ConditionBarViewModel(QObject *parent) : QObject(parent)
 {
     configNames.clear();
-    configNames.append("1");
-    configNames.append("2");
-    configNames.append("3");
+    configNames.append("Group By: Author");
+    configNames.append("Sort By: Last Modify Date");
+    configNames.append("Filter Location: US");
 }
 
 
