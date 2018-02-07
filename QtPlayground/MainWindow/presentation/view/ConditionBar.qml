@@ -32,7 +32,7 @@ Item {
                 delegate: Item {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    width: text1.width + 35
+                    width: childrenRect.width
                     Rectangle {
                         id: rectangle1
                         width: childrenRect.width
