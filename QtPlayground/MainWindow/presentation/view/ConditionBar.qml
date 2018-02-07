@@ -14,64 +14,78 @@ Item {
         color: "#558abf"
         anchors.fill: parent
 
-        ListView {
-            id: listView
-            spacing: 10
+        RowLayout {
+            id: rowLayout
+            anchors.leftMargin: 10
+            spacing: 0
             anchors.fill: parent
-            orientation: ListView.Horizontal
-            interactive: false
 
-            model: conditionBar.configNames
+            ListView {
+                id: listView
+                spacing: 10
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+                orientation: ListView.Horizontal
+                interactive: false
+                model: conditionBar.configNames
 
-            delegate: Item {
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                width: text1.width + 35
-                Rectangle {
-                    id: rectangle1
-                    width: childrenRect.width
-                    height: 25
-                    color: "#ff8351"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    radius: 5
-                    RowLayout {
-                        id: column
-                        width: text1.width + 35
-                        spacing: 0
+                delegate: Item {
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    width: text1.width + 35
+                    Rectangle {
+                        id: rectangle1
+                        width: childrenRect.width
+                        height: 25
+                        color: "#ff8351"
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
+                        radius: 5
+                        RowLayout {
+                            id: column
+                            width: text1.width + 35
+                            spacing: 0
 
-                        Item {
-                            id: item1
-                            width: text1.width + 10
+                            Item {
+                                id: item1
+                                width: text1.width + 10
 
-                            Text {
-                                id: text1
-                                x: 5
-                                anchors.verticalCenter: parent.verticalCenter
-                                color: "#ffffff"
-                                text: qsTr(modelData)
-                                anchors.verticalCenterOffset: 0
-                                font.pixelSize: 14
+                                Text {
+                                    id: text1
+                                    x: 5
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    color: "#ffffff"
+                                    text: qsTr(modelData)
+                                    anchors.verticalCenterOffset: 0
+                                    font.pixelSize: 14
+                                }
                             }
-                        }
 
-                        Item {
-                            id: item2
-                            width: 25
-                            height: 25
-                            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                            Item {
+                                id: item2
+                                width: 25
+                                height: 25
+                                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
 
-                            Text {
-                                id: remove1
-                                text: qsTr("X")
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                anchors.verticalCenter: parent.verticalCenter
-                                color: "#ffffff"
-                                font.pixelSize: 14
+                                Text {
+                                    id: remove1
+                                    text: qsTr("X")
+                                    anchors.horizontalCenter: parent.horizontalCenter
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    color: "#ffffff"
+                                    font.pixelSize: 14
+                                }
                             }
                         }
                     }
                 }
+            }
+
+            Item {
+                id: item3
+                width: 100
+                Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
+                Layout.fillHeight: true
             }
         }
     }
