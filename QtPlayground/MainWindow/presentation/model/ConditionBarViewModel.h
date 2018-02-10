@@ -11,6 +11,9 @@ public:
     explicit ConditionBarViewModel(QObject *parent = nullptr);
 
     QStringList getConfigNames();
+    void changeOrderBy();
+    void changeGroupBy();
+    void changeFilter();
 signals:
 
 public slots:

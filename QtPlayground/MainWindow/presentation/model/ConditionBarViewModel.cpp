@@ -13,3 +13,18 @@ QStringList ConditionBarViewModel::getConfigNames()
 {
     return configNames;
 }
+
+void ConditionBarViewModel::changeOrderBy()
+{
+    qDebug("Condition Change Order By");
+}
+
+void ConditionBarViewModel::changeGroupBy()
+{
+    qDebug("Condition Change Group By");
+}
+
+void ConditionBarViewModel::changeFilter()
+{
+    qDebug("Condition Change Filter");
+}

@@ -5,10 +5,7 @@ import QtGraphicalEffects 1.0
 
 Item {
     height: 56
-
-    ConditionBarVM {
-        id: conditionBar
-    }
+    property var conditionBar
 
     Rectangle {
         id: rectangle
@@ -81,7 +78,7 @@ Item {
 
                     DropShadow {
                         anchors.fill: rectangle_1
-                        radius: 6.0
+                        radius: 9.0
                         samples: 16
                         color: "#40000000"
                         source: rectangle_1

@@ -6,10 +6,7 @@ import QtGraphicalEffects 1.0
 Item {
     id: item1
     width: 96
-
-    TaskBarVM {
-        id: taskBar
-    }
+    property var taskBar
 
     Rectangle {
         id: rectangle
@@ -33,6 +30,11 @@ Item {
                     color: "#ffffff"
                     anchors.horizontalCenter: parent.horizontalCenter
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: taskBar.addNewProtocol()
+                    }
+
                     Text {
                         text: qsTr("Add New")
                         font.pixelSize: 14
@@ -43,7 +45,7 @@ Item {
 
                 DropShadow {
                     anchors.fill: add_new
-                    radius: 6.0
+                    radius: 9.0
                     samples: 16
                     color: "#40000000"
                     source: add_new
@@ -61,6 +63,11 @@ Item {
                     color: "#ffffff"
                     anchors.horizontalCenter: parent.horizontalCenter
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: taskBar.orderBy()
+                    }
+
                     Text {
                         text: qsTr("Order By")
                         font.pixelSize: 14
@@ -71,7 +78,7 @@ Item {
 
                 DropShadow {
                     anchors.fill: order_by
-                    radius: 6.0
+                    radius: 9.0
                     samples: 16
                     color: "#40000000"
                     source: order_by
@@ -89,6 +96,11 @@ Item {
                     color: "#ffffff"
                     anchors.horizontalCenter: parent.horizontalCenter
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: taskBar.groupBy()
+                    }
+
                     Text {
                         text: qsTr("Group By")
                         font.pixelSize: 14
@@ -99,7 +111,7 @@ Item {
 
                 DropShadow {
                     anchors.fill: group_by
-                    radius: 6.0
+                    radius: 9.0
                     samples: 16
                     color: "#40000000"
                     source: group_by
@@ -117,6 +129,11 @@ Item {
                     color: "#ffffff"
                     anchors.horizontalCenter: parent.horizontalCenter
 
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: taskBar.filter()
+                    }
+
                     Text {
                         text: qsTr("Filter")
                         font.pixelSize: 14
@@ -127,7 +144,7 @@ Item {
 
                 DropShadow {
                     anchors.fill: filter
-                    radius: 6.0
+                    radius: 9.0
                     samples: 16
                     color: "#40000000"
                     source: filter

@@ -6,12 +6,11 @@ import QtGraphicalEffects 1.0
 
 Rectangle
 {
-    id: mainWindow
     color: "#f6f6f6"
 
     MainWindowVM
     {
-        id: loginModel
+        id: mainWindow
     }
 
     Text {
@@ -34,6 +33,7 @@ Rectangle
             id: task_bar
             width: 96
             Layout.fillHeight: true
+            taskBar: mainWindow.taskBarViewModel
         }
 
         ColumnLayout {
@@ -48,6 +48,7 @@ Rectangle
                 id: condition_bar
                 height: 56
                 Layout.fillWidth: true
+                conditionBar: mainWindow.conditionBarViewModel
             }
 
             DropShadow {
