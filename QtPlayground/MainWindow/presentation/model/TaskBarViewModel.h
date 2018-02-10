@@ -2,7 +2,6 @@
 #define TASKBARVIEWMODEL_H
 
 #include <QObject>
-#include "MainWindowViewModel.h"
 
 class TaskBarViewModel : public QObject
 {

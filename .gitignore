@@ -7,3 +7,5 @@ build-QtPlayground-Raspberry_Pi_Nutrimmune_Emulator-Debug/
 *.user.*
 
 build-QtPlayground-Boot2Qt_*_Emulator-Debug/
+
+build-QtPlayground-Boot2Qt_5_9_4_Raspberry_Pi_3-Debug/

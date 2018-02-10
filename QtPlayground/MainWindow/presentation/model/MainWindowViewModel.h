@@ -8,8 +8,8 @@
 class MainWindowViewModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(TaskBarViewModel *taskBarViewModel READ getTaskBarViewModel)
-    Q_PROPERTY(ConditionBarViewModel *conditionBarViewModel READ getConditionBarViewModel)
+    Q_PROPERTY(TaskBarViewModel *taskBarViewModel READ getTaskBarViewModel NOTIFY taskBarViewModelChanged)
+    Q_PROPERTY(ConditionBarViewModel *conditionBarViewModel READ getConditionBarViewModel NOTIFY conditionBarViewModelChanged)
 public:
     explicit MainWindowViewModel(QObject *parent = 0);
     ~MainWindowViewModel();
@@ -17,7 +17,8 @@ public:
     TaskBarViewModel *getTaskBarViewModel() const;
     ConditionBarViewModel *getConditionBarViewModel() const;
 signals:
-
+    void taskBarViewModelChanged();
+    void conditionBarViewModelChanged();
 private slots:
    void handleOrderBy();
    void handleGroupBy();
