@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import Model 1.0
+import QtGraphicalEffects 1.0
 
 Item {
     height: 56
@@ -16,7 +17,7 @@ Item {
 
         RowLayout {
             id: rowLayout
-            anchors.leftMargin: 10
+            anchors.leftMargin: 15
             spacing: 0
             anchors.fill: parent
 
@@ -34,7 +35,7 @@ Item {
                     anchors.bottom: parent.bottom
                     width: childrenRect.width
                     Rectangle {
-                        id: rectangle1
+                        id: rectangle_1
                         width: childrenRect.width
                         height: 25
                         color: "#ff8351"
@@ -78,6 +79,14 @@ Item {
                             }
                         }
                     }
+
+                    DropShadow {
+                        anchors.fill: rectangle_1
+                        radius: 6.0
+                        samples: 16
+                        color: "#40000000"
+                        source: rectangle_1
+                    }
                 }
             }
 
@@ -86,6 +95,19 @@ Item {
                 width: 100
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 Layout.fillHeight: true
+
+                TextEdit {
+                    id: textEdit
+                    width: 80
+                    height: 20
+                    color: "#ffffff"
+                    text: qsTr("Clear All")
+                    font.family: "Verdana"
+                    horizontalAlignment: Text.AlignHCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: 16
+                }
             }
         }
     }

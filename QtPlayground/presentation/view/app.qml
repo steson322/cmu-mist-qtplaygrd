@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.1
+import QtGraphicalEffects 1.0
 
 //The module Model is dynamically created from Main. This is how the backend c++ code is exposed to the UI
 import Model 1.0
@@ -27,6 +28,7 @@ Item {
 
     ColumnLayout {
         id: columnLayout
+        anchors.bottomMargin: -menu_bar_shadow.height
         spacing: 0
         anchors.fill: parent
 
@@ -42,6 +44,16 @@ Item {
             id: page_loader
             Layout.fillWidth: true
             Layout.fillHeight: true
+        }
+
+        DropShadow {
+            id: menu_bar_shadow
+            anchors.fill: menu_bar
+            verticalOffset: 3
+            radius: 8.0
+            samples: 16
+            color: "#40000000"
+            source: menu_bar
         }
     }
 
