@@ -3,9 +3,6 @@
 ConditionBarViewModel::ConditionBarViewModel(QObject *parent) : QObject(parent)
 {
     configNames.clear();
-    configNames.append("Group By: Author");
-    configNames.append("Sort By: Last Modify Date");
-    configNames.append("Filter Location: US");
 }
 
 
@@ -16,15 +13,30 @@ QStringList ConditionBarViewModel::getConfigNames()
 
 void ConditionBarViewModel::changeOrderBy()
 {
-    qDebug("Condition Change Order By");
+    if (configNames.length() >= 3)
+    {
+        configNames.removeFirst();
+    }
+    configNames.append("Order By: Last Modify Date");
+    emit configNamesChanged();
 }
 
 void ConditionBarViewModel::changeGroupBy()
 {
-    qDebug("Condition Change Group By");
+    if (configNames.length() >= 3)
+    {
+        configNames.removeFirst();
+    }
+    configNames.append("Group By: Author");
+    emit configNamesChanged();
 }
 
 void ConditionBarViewModel::changeFilter()
 {
-    qDebug("Condition Change Filter");
+    if (configNames.length() >= 3)
+    {
+        configNames.removeFirst();
+    }
+    configNames.append("Filter Location: US");
+    emit configNamesChanged();
 }

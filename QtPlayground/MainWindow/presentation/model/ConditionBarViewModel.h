@@ -6,7 +6,7 @@
 class ConditionBarViewModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList configNames READ getConfigNames)
+    Q_PROPERTY(QStringList configNames READ getConfigNames NOTIFY configNamesChanged)
 public:
     explicit ConditionBarViewModel(QObject *parent = nullptr);
 
@@ -15,7 +15,7 @@ public:
     void changeGroupBy();
     void changeFilter();
 signals:
-
+    void configNamesChanged();
 public slots:
 
 private:
