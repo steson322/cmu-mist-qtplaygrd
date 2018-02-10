@@ -9,9 +9,15 @@ ProtocolSectionListViewModel::ProtocolSectionListViewModel(QObject *parent)
 ProtocolSectionListViewModel::ProtocolSectionListViewModel(QList<ProtocolGroup *> protocolGroups, QObject *parent)
     : QAbstractListModel(parent)
 {
+    this->updateProtocols(protocolGroups);
+}
+
+void ProtocolSectionListViewModel::updateProtocols(QList<ProtocolGroup *> protocolGroups)
+{
     this->m_protocolSections = QList<ProtocolSectionViewModel*>();
     for (int i = 0; i < protocolGroups.size(); i++)
         this->m_protocolSections.append(new ProtocolSectionViewModel(protocolGroups.at(i), this));
+    qDebug(" new protocol group received, size = %d", this->m_protocolSections.size());
 }
 
 int ProtocolSectionListViewModel::rowCount(const QModelIndex &parent) const

@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import Model 1.0
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 1.1
 //import "qrc:///presentation/view/"
 
 Rectangle
@@ -59,6 +60,19 @@ Rectangle
                 samples: 16
                 color: "#40000000"
                 source: condition_bar
+            }
+
+            ScrollView {
+                id: protocol_section_list_view_scroll_wrapper
+                Layout.fillHeight: true
+                Layout.fillWidth: true
+
+                ProtocolSectionListView {
+                    id: protocol_section_list_view
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    model: mainWindow.protocolSectionListViewModel
+                }
             }
         }
 
