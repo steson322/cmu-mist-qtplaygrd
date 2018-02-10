@@ -39,7 +39,6 @@ Item {
                         width: childrenRect.width
                         height: 25
                         color: "#ff8351"
-                        anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
                         radius: 5
                         RowLayout {
