@@ -5,6 +5,12 @@
 #include "MainWindow/presentation/model/MainWindowViewModel.h"
 #include "MainWindow/presentation/model/ConditionBarViewModel.h"
 #include "MainWindow/presentation/model/TaskBarViewModel.h"
+#include "MainWindow/presentation/model/ProtocolSectionListViewModel.h"
+
+#include "Domain/Protocol.h"
+#include "Domain/Aggregation.h"
+#include "Domain/ProtocolGroup.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +22,31 @@ int main(int argc, char *argv[])
     qmlRegisterType<MainWindowViewModel>("Model", 1, 0, "MainWindowVM");
     qmlRegisterType<ConditionBarViewModel>("Model", 1, 0, "ConditionBarVM");
     qmlRegisterType<TaskBarViewModel>("Model", 1, 0, "TaskBarVM");
+
+    // debug
+    Protocol *one = new Protocol();
+    one->setName("one");
+    Protocol *two = new Protocol();
+    two->setName("two");
+    Protocol *three = new Protocol();
+    three->setName("three");
+
+    Aggregation *odd = new Aggregation("oddOrEven", "odd");
+    Aggregation *even = new Aggregation("oddOrEven", "even");
+
+    ProtocolGroup *oddGroup = new ProtocolGroup(odd);
+    oddGroup->addProtocol(one);
+    oddGroup->addProtocol(three);
+
+    ProtocolGroup *evenGroup = new ProtocolGroup(even);
+    evenGroup->addProtocol(two);
+
+    QList<ProtocolGroup*> protocolGroup = QList<ProtocolGroup*>();
+    protocolGroup.append(oddGroup);
+    protocolGroup.append(evenGroup);
+
+    ProtocolSectionListViewModel *viewModel = new ProtocolSectionListViewModel(protocolGroup, nullptr);
+    qInfo() << viewModel->rowCount();
 
     // This call to QQuickView is to initialize the application and load the Qt runtime.
     // The source url is the url of the main qml file from the project.
