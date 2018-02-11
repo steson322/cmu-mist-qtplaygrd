@@ -6,8 +6,7 @@ HEADERS += \
     $$PWD/presentation/model/TaskBarViewModel.h \
     $$PWD/presentation/model/ProtocolSectionListViewModel.h \
     $$PWD/presentation/model/ProtocolSectionViewModel.h \
-    $$PWD/presentation/model/ProtocolViewModel.h
-    $$PWD/presentation/model/TaskBarViewModel.h \
+    $$PWD/presentation/model/ProtocolViewModel.h \
     $$PWD/model/ConfigurationModel.h
 
 SOURCES += \
@@ -16,8 +15,7 @@ SOURCES += \
     $$PWD/presentation/model/TaskBarViewModel.cpp \
     $$PWD/presentation/model/ProtocolSectionListViewModel.cpp \
     $$PWD/presentation/model/ProtocolSectionViewModel.cpp \
-    $$PWD/presentation/model/ProtocolViewModel.cpp
-    $$PWD/presentation/model/TaskBarViewModel.cpp \
+    $$PWD/presentation/model/ProtocolViewModel.cpp \
     $$PWD/model/ConfigurationModel.cpp
 
 DISTFILES += \
