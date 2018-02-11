@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.1
 import Model 1.0
 import QtGraphicalEffects 1.0
+import QtQuick.Controls 1.1
 //import "qrc:///presentation/view/"
 
 Rectangle
@@ -13,15 +14,15 @@ Rectangle
         id: mainWindow
     }
 
-    Text {
-        id: text1
-        x: 104
-        y: 66
-        width: 136
-        height: 54
-        text: qsTr("Hello World!")
-        font.pixelSize: 24
-    }
+//    Text {
+//        id: text1
+//        x: 104
+//        y: 66
+//        width: 136
+//        height: 54
+//        text: qsTr("Hello World!")
+//        font.pixelSize: 24
+//    }
 
     RowLayout {
         id: row
@@ -59,6 +60,18 @@ Rectangle
                 samples: 16
                 color: "#40000000"
                 source: condition_bar
+            }
+
+            Item {
+                id: dummyItem
+                width: 10
+                height: 10000
+
+                ProtocolSectionListView {
+                    id: protocol_section_list_view
+                    anchors.fill: parent
+                    model: mainWindow.protocolSectionListViewModel
+                }
             }
         }
 

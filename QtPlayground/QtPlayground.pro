@@ -17,6 +17,7 @@ INSTALLS += target
 SOURCES += main.cpp
 
 include(MainWindow/MainWindow.pri)
+include(Domain/Domain.pri)
 
 RESOURCES += \
     MainWindow/presentation/view/MainWindow.qrc \
@@ -24,3 +25,7 @@ RESOURCES += \
 
 OTHER_FILES += \
     presentation/view/app.qml
+
+DISTFILES += \
+    Domain/Domain.pri \
+    Domain/Domain.pri

@@ -5,6 +5,12 @@
 #include "MainWindow/presentation/model/MainWindowViewModel.h"
 #include "MainWindow/presentation/model/ConditionBarViewModel.h"
 #include "MainWindow/presentation/model/TaskBarViewModel.h"
+#include "MainWindow/presentation/model/ProtocolSectionListViewModel.h"
+
+#include "Domain/Protocol.h"
+#include "Domain/Aggregation.h"
+#include "Domain/ProtocolGroup.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -16,6 +22,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<MainWindowViewModel>("Model", 1, 0, "MainWindowVM");
     qmlRegisterType<ConditionBarViewModel>("Model", 1, 0, "ConditionBarVM");
     qmlRegisterType<TaskBarViewModel>("Model", 1, 0, "TaskBarVM");
+    qmlRegisterType<ProtocolSectionListViewModel>("Model", 1, 0, "ProtocolSectionListVM");
 
     // This call to QQuickView is to initialize the application and load the Qt runtime.
     // The source url is the url of the main qml file from the project.
