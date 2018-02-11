@@ -11,18 +11,15 @@ void TaskBarViewModel::addNewProtocol()
 
 void TaskBarViewModel::orderBy()
 {
-    qDebug( "Order By Clicked" );
     emit orderByChanged();
 }
 
 void TaskBarViewModel::groupBy()
 {
-    qDebug( "Group By Clicked" );
     emit groupByChanged();
 }
 
 void TaskBarViewModel::filter()
 {
-    qDebug( "Filter Clicked" );
     emit filterChanged();
 }

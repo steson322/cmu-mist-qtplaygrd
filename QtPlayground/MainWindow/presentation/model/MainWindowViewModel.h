@@ -5,6 +5,7 @@
 #include "TaskBarViewModel.h"
 #include "ConditionBarViewModel.h"
 #include "ProtocolSectionListViewModel.h"
+#include "../../model/ConfigurationModel.h"
 
 class MainWindowViewModel : public QObject
 {
@@ -27,11 +28,16 @@ private slots:
    void handleOrderBy();
    void handleGroupBy();
    void handleFilter();
+   void handleRemoveConfiguration(QString key);
+   void handleRemoveAllConfigurations();
 
 private:
    TaskBarViewModel * taskBarViewModel;
    ConditionBarViewModel * conditionBarViewModel;
    ProtocolSectionListViewModel *protocolSectionListViewModel;
+
+   // Key: Configuration label, Value: Configuration object
+   QMap<QString, ConfigurationModel> configurationMap;
 
    QList<ProtocolGroup*> getProtocolGroupsOne();
    QList<ProtocolGroup*> getProtocolGroupsTwo();

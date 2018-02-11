@@ -9,6 +9,8 @@ MainWindowViewModel::MainWindowViewModel(QObject * parent) :
     connect(taskBarViewModel, SIGNAL(orderByChanged()), SLOT(handleOrderBy()));
     connect(taskBarViewModel, SIGNAL(groupByChanged()), SLOT(handleGroupBy()));
     connect(taskBarViewModel, SIGNAL(filterChanged()), SLOT(handleFilter()));
+    connect(conditionBarViewModel, SIGNAL(configurationRemoved(QString)), SLOT(handleRemoveConfiguration(QString)));
+    connect(conditionBarViewModel, SIGNAL(allConfigurationsRemoved()), SLOT(handleRemoveAllConfigurations()));
 }
 
 MainWindowViewModel::~MainWindowViewModel()
@@ -33,21 +35,47 @@ ProtocolSectionListViewModel *MainWindowViewModel::getProtocolSectionListViewMod
 void MainWindowViewModel::handleOrderBy()
 {
     qDebug( "Order By Change Received");
-    conditionBarViewModel->changeOrderBy();
+    ConfigurationModel *configuration = new ConfigurationModel(
+                ConfigurationModel::ConfigurationType::ORDER_BY,
+                ConfigurationModel::ConfigurationField::LAST_MODIFY_TIME);
+    QString text = configuration->buildText();
+    configurationMap.insert(text, *configuration);
+    conditionBarViewModel->add(text);
     protocolSectionListViewModel->updateProtocols(this->getProtocolGroupsOne());
 }
 
 void MainWindowViewModel::handleGroupBy()
 {
     qDebug( "Group By Change Received");
-    conditionBarViewModel->changeGroupBy();
+    ConfigurationModel *configuration = new ConfigurationModel(
+                ConfigurationModel::ConfigurationType::GROUP_BY,
+                ConfigurationModel::ConfigurationField::AUTHOR);
+    QString text = configuration->buildText();
+    configurationMap.insert(text, *configuration);
+    conditionBarViewModel->add(text);
     protocolSectionListViewModel->updateProtocols(this->getProtocolGroupsTwo());
 }
 
 void MainWindowViewModel::handleFilter()
 {
     qDebug( "Filter Change Received");
-    conditionBarViewModel->changeFilter();
+    ConfigurationModel *configuration = new ConfigurationModel(
+                ConfigurationModel::ConfigurationType::FILTER,
+                ConfigurationModel::ConfigurationField::PROTOCOL_NAME,
+                "Some*");
+    QString text = configuration->buildText();
+    configurationMap.insert(text, *configuration);
+    conditionBarViewModel->add(text);
+}
+
+void MainWindowViewModel::handleRemoveConfiguration(QString key)
+{
+    configurationMap.remove(key);
+}
+
+void MainWindowViewModel::handleRemoveAllConfigurations()
+{
+    configurationMap.clear();
 }
 
 // DEBUG PURPOSE
