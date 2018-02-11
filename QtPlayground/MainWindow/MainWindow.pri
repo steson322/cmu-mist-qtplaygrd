@@ -20,4 +20,6 @@ DISTFILES += \
     $$PWD/presentation/view/MainWindow.qml \
     $$PWD/presentation/view/ConditionBar.qml\
     $$PWD/presentation/view/TaskBar.qml \
-    $$PWD/presentation/view/ProtocolSectionListView.qml
+    $$PWD/presentation/view/ProtocolSectionListView.qml \
+    $$PWD/presentation/view/ProtocolSectionView.qml \
+    $$PWD/presentation/view/ProtocolView.qml

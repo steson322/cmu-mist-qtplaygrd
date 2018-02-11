@@ -14,15 +14,15 @@ Rectangle
         id: mainWindow
     }
 
-    Text {
-        id: text1
-        x: 104
-        y: 66
-        width: 136
-        height: 54
-        text: qsTr("Hello World!")
-        font.pixelSize: 24
-    }
+//    Text {
+//        id: text1
+//        x: 104
+//        y: 66
+//        width: 136
+//        height: 54
+//        text: qsTr("Hello World!")
+//        font.pixelSize: 24
+//    }
 
     RowLayout {
         id: row
@@ -62,15 +62,14 @@ Rectangle
                 source: condition_bar
             }
 
-            ScrollView {
-                id: protocol_section_list_view_scroll_wrapper
-                Layout.fillHeight: true
-                Layout.fillWidth: true
+            Item {
+                id: dummyItem
+                width: 10
+                height: 10000
 
                 ProtocolSectionListView {
                     id: protocol_section_list_view
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
+                    anchors.fill: parent
                     model: mainWindow.protocolSectionListViewModel
                 }
             }

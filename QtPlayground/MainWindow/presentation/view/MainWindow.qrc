@@ -3,6 +3,8 @@
         <file>MainWindow.qml</file>
         <file>ConditionBar.qml</file>
         <file>TaskBar.qml</file>
-	<file>ProtocolSectionListView.qml</file>
+        <file>ProtocolSectionListView.qml</file>
+        <file>ProtocolSectionView.qml</file>
+        <file>ProtocolView.qml</file>
     </qresource>
 </RCC>

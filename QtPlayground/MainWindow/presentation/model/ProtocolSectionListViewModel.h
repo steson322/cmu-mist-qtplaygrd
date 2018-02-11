@@ -22,7 +22,7 @@ public:
     // Data
     void updateProtocols(QList<ProtocolGroup*> protocolGroups);
 private:
-    QList<ProtocolSectionViewModel*> m_protocolSections;
+    QList<QVariant> m_protocolSections;
 };
 
 #endif // PROTOCOLSECTIONLISTVIEWMODEL_H
