@@ -6,9 +6,20 @@ ListView {
     Layout.fillWidth: true
 
     delegate: Rectangle {
-        width: 10
-        height: 10
-        color: "#ff0000"
+        id: container
+        anchors.topMargin: -1
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: 56
+
+        Rectangle {
+            id: rectangle
+            color: "#ffffff"
+            anchors.topMargin: -1
+            border.color: "#d0d0d0"
+            border.width: 1
+            anchors.fill: parent
+        }
     }
 
 //    delegate: ListView {

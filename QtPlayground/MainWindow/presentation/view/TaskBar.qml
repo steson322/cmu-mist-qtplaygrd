@@ -28,6 +28,8 @@ Item {
                     width: 72
                     height: 72
                     color: "#ffffff"
+                    border.color: "#d0d0d0"
+                    border.width: 1
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     MouseArea {
