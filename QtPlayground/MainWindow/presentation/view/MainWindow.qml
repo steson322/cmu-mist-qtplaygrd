@@ -46,10 +46,14 @@ Rectangle
                 Layout.fillHeight: true
                 Layout.fillWidth: true
 
-                ProtocolSectionListView {
-                    id: protocol_section_list_view
+                ScrollView {
                     anchors.fill: parent
-                    model: mainWindow.protocolSectionListViewModel
+
+                    ProtocolSectionListView {
+                        id: protocol_section_list_view
+                        anchors.fill: parent
+                        model: mainWindow.protocolSectionListViewModel
+                    }
                 }
             }
 
