@@ -64,13 +64,32 @@ Rectangle
 
             Item {
                 id: dummyItem
-                width: 10
+                width: 100
                 height: 10000
 
-                ProtocolSectionListView {
+                ListView {
                     id: protocol_section_list_view
-                    anchors.fill: parent
+                    width: 100
+                    height: 10000
                     model: mainWindow.protocolSectionListViewModel
+
+                    delegate: ColumnLayout {
+                        width: 100
+                        height: 100
+
+                        Text {
+                            text: caption
+                        }
+
+                        ListView {
+                            anchors.fill: parent
+
+                            model: protocols
+                            delegate: Text {
+                                text: name
+                            }
+                        }
+                    }
                 }
             }
         }
