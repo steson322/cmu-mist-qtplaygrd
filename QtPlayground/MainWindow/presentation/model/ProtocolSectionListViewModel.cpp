@@ -3,7 +3,7 @@
 ProtocolSectionListViewModel::ProtocolSectionListViewModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    this->m_protocolSections = QList<QVariant>();
+    this->m_protocolSections = QList<ProtocolSectionViewModel*>();
 }
 
 ProtocolSectionListViewModel::ProtocolSectionListViewModel(QList<ProtocolGroup *> protocolGroups, QObject *parent)
@@ -19,13 +19,18 @@ void ProtocolSectionListViewModel::updateProtocols(QList<ProtocolGroup *> protoc
 
     for (int i = 0; i < protocolGroups.size(); i++)
     {
-        QVariant v = QVariant::fromValue(new ProtocolSectionViewModel(protocolGroups.at(i), this));
-        this->m_protocolSections.append(v);
+        ProtocolSectionViewModel *newSection = new ProtocolSectionViewModel(protocolGroups.at(i), this);
+        this->m_protocolSections.append(newSection);
     }
-    qDebug(" new protocol group received, size = %d", this->m_protocolSections.size());
-
     this->endResetModel();
-    //emit layoutChanged();
+}
+
+QHash<int, QByteArray> ProtocolSectionListViewModel::roleNames() const
+{
+    QHash<int, QByteArray> hash;
+    hash[CaptionRole] = "caption";
+    hash[ProtocolRole] = "protocols";
+    return hash;
 }
 
 int ProtocolSectionListViewModel::rowCount(const QModelIndex &parent) const
@@ -40,10 +45,16 @@ int ProtocolSectionListViewModel::rowCount(const QModelIndex &parent) const
 
 QVariant ProtocolSectionListViewModel::data(const QModelIndex &index, int role) const
 {
-    qDebug("pre-called data for %d", index.row());
     if (!index.isValid())
         return QVariant();
 
-    qDebug("called data for %d", index.row());
-    return QVariant(this->m_protocolSections);
+    if (index.row() < 0 || index.row() > rowCount() - 1)
+        return QVariant();
+
+    if (role == CaptionRole)
+        return QVariant(this->m_protocolSections.at(index.row())->caption());
+    else if (role == ProtocolRole)
+        return QVariant::fromValue(this->m_protocolSections.at(index.row()));
+    else
+        return QVariant();
 }

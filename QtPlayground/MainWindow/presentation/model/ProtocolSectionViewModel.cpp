@@ -4,6 +4,7 @@ ProtocolSectionViewModel::ProtocolSectionViewModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     this->m_protocolViewModels = QList<ProtocolViewModel*>();
+    this->m_caption = "         World";
 }
 
 ProtocolSectionViewModel::ProtocolSectionViewModel(ProtocolGroup *protocolGroup, QObject *parent)
@@ -12,12 +13,25 @@ ProtocolSectionViewModel::ProtocolSectionViewModel(ProtocolGroup *protocolGroup,
     this->m_protocolViewModels = QList<ProtocolViewModel*>();
     for (int i = 0; i < protocolGroup->getProtocols().size(); i++)
         this->m_protocolViewModels.append(new ProtocolViewModel(protocolGroup->getProtocols().at(i)));
+    this->m_caption = "         World";
+}
+
+QString ProtocolSectionViewModel::caption() const
+{
+    return m_caption;
 }
 
 QVariant ProtocolSectionViewModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     // FIXME: Implement me!
     return QVariant();
+}
+
+QHash<int, QByteArray> ProtocolSectionViewModel::roleNames() const
+{
+    QHash<int, QByteArray> hash;
+    hash[NameRole] = "name";
+    return hash;
 }
 
 int ProtocolSectionViewModel::rowCount(const QModelIndex &parent) const
@@ -27,6 +41,8 @@ int ProtocolSectionViewModel::rowCount(const QModelIndex &parent) const
     if (parent.isValid())
         return 0;
 
+    qDebug("protocol sections rows: %d", this->m_protocolViewModels.size());
+
     return this->m_protocolViewModels.size();
 }
 
@@ -35,9 +51,14 @@ QVariant ProtocolSectionViewModel::data(const QModelIndex &index, int role) cons
     if (!index.isValid())
         return QVariant();
 
-    QList<QVariant> list = QList<QVariant>();
-    for (int i = 0; i < this->m_protocolViewModels.size(); i++)
-        list.append(QVariant::fromValue(this->m_protocolViewModels.at(i)));
+    if (index.row() < 0 || index.row() > rowCount() - 1)
+        return QVariant();
 
-    return QVariant(list);
+    if (role == NameRole)
+    {
+        qDebug("---> returning name for protocol: " + this->m_protocolViewModels.at(index.row())->name().toLatin1());
+        return this->m_protocolViewModels.at(index.row())->name();
+    }
+    else
+        return QVariant();
 }

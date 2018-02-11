@@ -23,6 +23,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<ConditionBarViewModel>("Model", 1, 0, "ConditionBarVM");
     qmlRegisterType<TaskBarViewModel>("Model", 1, 0, "TaskBarVM");
     qmlRegisterType<ProtocolSectionListViewModel>("Model", 1, 0, "ProtocolSectionListVM");
+    qmlRegisterType<ProtocolSectionViewModel>("Model", 1, 0, "ProtocolSectionVM");
+    qmlRegisterType<ProtocolViewModel>("Model", 1, 0, "ProtocolVM");
 
     // This call to QQuickView is to initialize the application and load the Qt runtime.
     // The source url is the url of the main qml file from the project.
