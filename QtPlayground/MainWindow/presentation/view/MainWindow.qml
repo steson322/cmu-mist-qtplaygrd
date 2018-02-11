@@ -48,6 +48,7 @@ Rectangle
 
                 ScrollView {
                     anchors.fill: parent
+                    anchors.bottomMargin: -condition_bar_shadow.height
 
                     ProtocolSectionListView {
                         id: protocol_section_list_view

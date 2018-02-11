@@ -4,7 +4,7 @@ ProtocolSectionViewModel::ProtocolSectionViewModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     this->m_protocolViewModels = QList<ProtocolViewModel*>();
-    this->m_caption = "         World";
+    this->m_caption = "World";
 }
 
 ProtocolSectionViewModel::ProtocolSectionViewModel(ProtocolGroup *protocolGroup, QObject *parent)
@@ -13,7 +13,7 @@ ProtocolSectionViewModel::ProtocolSectionViewModel(ProtocolGroup *protocolGroup,
     this->m_protocolViewModels = QList<ProtocolViewModel*>();
     for (int i = 0; i < protocolGroup->getProtocols().size(); i++)
         this->m_protocolViewModels.append(new ProtocolViewModel(protocolGroup->getProtocols().at(i)));
-    this->m_caption = "         World";
+    this->m_caption = "World";
 }
 
 QString ProtocolSectionViewModel::caption() const
