@@ -25,7 +25,7 @@ Item {
                 Layout.fillWidth: true
                 orientation: ListView.Horizontal
                 interactive: false
-                model: conditionBar.configNames
+                model: conditionBar.configurationNames
 
                 delegate: Item {
                     anchors.top: parent.top
@@ -67,10 +67,16 @@ Item {
                                 Text {
                                     id: remove1
                                     text: qsTr("X")
+                                    font.family: "Verdana"
                                     anchors.horizontalCenter: parent.horizontalCenter
                                     anchors.verticalCenter: parent.verticalCenter
                                     color: "#ffffff"
                                     font.pixelSize: 14
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    onClicked: conditionBar.remove(modelData)
                                 }
                             }
                         }
@@ -92,7 +98,7 @@ Item {
                 Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                 Layout.fillHeight: true
 
-                TextEdit {
+                Text {
                     id: textEdit
                     width: 80
                     height: 20
@@ -103,6 +109,11 @@ Item {
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 16
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: conditionBar.removeAll()
                 }
             }
         }

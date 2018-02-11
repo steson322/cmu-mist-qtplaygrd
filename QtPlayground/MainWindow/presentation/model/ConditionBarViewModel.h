@@ -2,24 +2,31 @@
 #define CONDITIONBARVIEWMODEL_H
 
 #include <QObject>
+#include <QMap>
+#include <QVariant>
+#include "../../model/ConfigurationModel.h"
 
 class ConditionBarViewModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList configNames READ getConfigNames NOTIFY configNamesChanged)
+    Q_PROPERTY(QStringList configurationNames READ getConfigurationNames NOTIFY configurationChanged)
 public:
     explicit ConditionBarViewModel(QObject *parent = nullptr);
 
-    QStringList getConfigNames();
+    Q_INVOKABLE void remove(const QString id);
+    Q_INVOKABLE void removeAll();
+
+    QStringList getConfigurationNames();
     void changeOrderBy();
     void changeGroupBy();
     void changeFilter();
 signals:
-    void configNamesChanged();
+    void configurationChanged();
 public slots:
 
 private:
-    QStringList configNames;
+    // Key: Configuration label, Value: Configuration object
+    QMap<QString, ConfigurationModel> configurationMap;
 };
 
 #endif // CONDITIONBARVIEWMODEL_H

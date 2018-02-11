@@ -1,42 +1,75 @@
 #include "ConditionBarViewModel.h"
 
+const QString ORDER_BY = "order_by";
+const QString GROUP_BY = "group_by";
+const QString FILTER = "filter";
+
 ConditionBarViewModel::ConditionBarViewModel(QObject *parent) : QObject(parent)
 {
-    configNames.clear();
 }
 
-
-QStringList ConditionBarViewModel::getConfigNames()
+void ConditionBarViewModel::remove(QString key)
 {
-    return configNames;
+    qDebug("Request to Remove");
+    configurationMap.remove(key);
+    emit configurationChanged();
+}
+
+void ConditionBarViewModel::removeAll()
+{
+    qDebug("Request to Remove All");
+    configurationMap.clear();
+    emit configurationChanged();
+}
+
+QStringList ConditionBarViewModel::getConfigurationNames()
+{
+    QStringList *list = new QStringList(configurationMap.keys());
+    return *list;
 }
 
 void ConditionBarViewModel::changeOrderBy()
 {
-    if (configNames.length() >= 3)
+    ConfigurationModel *configuration = new ConfigurationModel(
+                ConfigurationModel::ConfigurationType::ORDER_BY,
+                ConfigurationModel::ConfigurationField::LAST_MODIFY_TIME);
+    QString text = configuration->buildText();
+    if (configurationMap.contains(text))
     {
-        configNames.removeFirst();
+        return;
     }
-    configNames.append("Order By: Last Modify Date");
-    emit configNamesChanged();
+    qDebug(qPrintable(text));
+    configurationMap.insert(text, *configuration);
+    emit configurationChanged();
 }
 
 void ConditionBarViewModel::changeGroupBy()
 {
-    if (configNames.length() >= 3)
+    ConfigurationModel *configuration = new ConfigurationModel(
+                ConfigurationModel::ConfigurationType::GROUP_BY,
+                ConfigurationModel::ConfigurationField::AUTHOR);
+    QString text = configuration->buildText();
+    if (configurationMap.contains(GROUP_BY))
     {
-        configNames.removeFirst();
+        return;
     }
-    configNames.append("Group By: Author");
-    emit configNamesChanged();
+    qDebug(qPrintable(text));
+    configurationMap.insert(text, *configuration);
+    emit configurationChanged();
 }
 
 void ConditionBarViewModel::changeFilter()
 {
-    if (configNames.length() >= 3)
+    ConfigurationModel *configuration = new ConfigurationModel(
+                ConfigurationModel::ConfigurationType::FILTER,
+                ConfigurationModel::ConfigurationField::PROTOCOL_NAME,
+                "Some*");
+    QString text = configuration->buildText();
+    if (configurationMap.contains(FILTER))
     {
-        configNames.removeFirst();
+        return;
     }
-    configNames.append("Filter Location: US");
-    emit configNamesChanged();
+    qDebug(qPrintable(text));
+    configurationMap.insert(text, *configuration);
+    emit configurationChanged();
 }
